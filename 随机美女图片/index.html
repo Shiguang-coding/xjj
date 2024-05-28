@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charSet="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" /> 
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="referrer" content="never">
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>随机美女图片</title>
+    <link rel="stylesheet" href="css/style.css">
+	<style>
+	body {margin:0;}
+	
+	ul {
+	  list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	  overflow: hidden;
+	  background-color: #333;
+	  position: fixed;
+	  top: 0;
+	  width: 100%;
+	}
+	
+	li {
+	  float: left;
+	}
+	
+	li a {
+	  display: block;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	li a:hover:not(.active) {
+	  background-color: #111;
+	}
+	
+	.active {
+	  background-color: #4CAF50;
+	}
+	
+	</style>
+</head>
+<body>
+    <section id="main">
+    <img id="player" src="https://www.bfbke.com/bzApi.php?type=sj" alt="图片加载失败！"/>
+    </section>
+    <section id="buttons">
+        <!--<button id="switch">自动切换</button>-->
+        <a href="./index.html"><button id="next">换一张</button></a>
+    </section>
+</body>
+</html>

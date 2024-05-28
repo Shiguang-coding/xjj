@@ -1,0 +1,25 @@
+原开源仓库地址：https://gitee.com/buyuyu/free-girls-video
+
+
+pc端会自动跳转，直接访问域名或者/pc.html即可，移动端访问/index2.html
+
+若原视频源失效，更改index.html下的视频源地址 https://tucdn.wpon.cn/api-girl/index.php?wpon=302 即可
+
+随机小姐姐视频api网上有很多，可以参考文章
+线路0：https://www.cunshao.com/666666/api/pc.php
+
+线路1：https://jx.iqfk.top/api/sjsp.php
+
+线路2：http://api.yujn.cn/api/zzxjj.php
+
+线路3：https://www.cunshao.com/666666/api/web.php
+
+线路4：https://api.qoc.cc/api/xjj
+
+线路5：http://v.nrzj.vip/video.php
+
+
+作者: 時光
+链接: https://blog.shiguang666.eu.org/2024/05/28/e2e447f35760/
+来源: 時光
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

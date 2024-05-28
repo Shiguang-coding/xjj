@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player with Source Switch</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  .video-container {
+    width: 100%;
+    max-width: 1200px; /* 放大横版视频的最大宽度 */
+    position: relative;
+    background-color: black;
+  }
+  #player {
+    width: 100%;
+    height: 100%;
+    max-height: 85vh; /* 放大视频的最大高度 */
+    object-fit: contain;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    position: relative;
+  }
+  .button-container button {
+    background: #7F9CCC;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #sourceSelectContainer {
+    position: absolute;
+    background: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+  }
+  #sourceSelect {
+    display: block;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<div class="video-container">
+  <section id="main">
+    <video id="player" src="https://www.cunshao.com/666666/api/pc.php" controls="controls"></video>
+  </section>
+</div>
+<div class="button-container">
+  <button id="switch">连续: 开</button>
+  <button id="next1">换一个</button>
+  <button id="changeSource">换源</button>
+  <div id="sourceSelectContainer">
+    <select id="sourceSelect">
+      <option value="https://www.cunshao.com/666666/api/pc.php">线路0</option>
+	  <option value="https://jx.iqfk.top/api/sjsp.php">线路1</option>
+	  <option value="http://api.yujn.cn/api/zzxjj.php">线路2</option>
+      <option value="https://www.cunshao.com/666666/api/web.php">线路3</option>
+	  <option value="https://api.qoc.cc/api/xjj">线路4</option>
+      <option value="http://v.nrzj.vip/video.php">线路5</option>
+    </select>
+    <button id="applySource">应用</button>
+  </div>
+</div>
+<script>
+  (function (window, document) {
+    var get = function (id) {
+      return document.getElementById(id);
+    }
+    var bind = function (element, event, callback) {
+      return element.addEventListener(event, callback);
+    }
+    var auto = true;
+    var player = get('player');
+    var sourceSelect = get('sourceSelect');
+
+    var adjustVideoSize = function () {
+      var container = document.querySelector('.video-container');
+      if (player.videoWidth / player.videoHeight > 1) {
+        // 横版视频
+        container.style.width = '100%';
+        container.style.height = 'auto';
+      } else {
+        // 纵版视频
+        container.style.width = 'auto';
+        container.style.height = '85vh'; /* 纵版视频的高度 */
+      }
+    };
+
+    var randomm = function () {
+      player.src = sourceSelect.value + '?_t=' + Math.random();
+      player.play();
+    }
+
+    bind(get('next1'), 'click', randomm);
+    bind(player, 'error', function () {
+      randomm();
+    });
+    bind(get('switch'), 'click', function () {
+      auto = !auto;
+      this.innerText = '连续: ' + (auto ? '开' : '关');
+    });
+    bind(player, 'ended', function () {
+      if (auto) randomm();
+    });
+
+    // 添加下拉框的显示和隐藏逻辑
+    bind(get('changeSource'), 'click', function () {
+      var sourceSelectContainer = get('sourceSelectContainer');
+      sourceSelectContainer.style.display = sourceSelectContainer.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // 添加下拉框选项的更改逻辑
+    bind(get('applySource'), 'click', function () {
+      get('sourceSelectContainer').style.display = 'none'; // 隐藏下拉框
+      randomm(); // 应用选定的视频源
+    });
+
+    // 在视频元数据加载后调整视频尺寸
+    bind(player, 'loadedmetadata', adjustVideoSize);
+  })(window, document);
+</script>
+</body>
+</html>
